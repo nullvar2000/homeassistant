@@ -1,0 +1,29 @@
+notify:
+  - name: all_devices
+    platform: group
+    services:
+      - service: mobile_app_pixel_6_rood
+      - service: mobile_app_pixel_6_pro_mary
+
+mqtt:
+  camera:
+    - topic: BlueIris/frontstairs/alert
+      name: MQTT Frontstairs Alert
+      encoding: b64
+      unique_id: camera.mqtt_frontstairs_alert
+    - topic: BlueIris/backporch/alert
+      name: MQTT Backporch Alert
+      encoding: b64
+      unique_id: camera.mqtt_backporch_alert
+    - topic: BlueIris/northyard/alert
+      name: MQTT Northyard Alert
+      encoding: b64
+      unique_id: camera.mqtt_northyard_alert
+    - topic: BlueIris/southyard/alert
+      name: MQTT Southyard Alert
+      encoding: b64
+      unique_id: camera.mqtt_southyard_alert
+    - topic: BlueIris/frontdoor/alert
+      name: MQTT Frontdoor Alert
+      encoding: b64
+      unique_id: camera.mqtt_frontdoor_alert
