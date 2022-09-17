@@ -1,0 +1,33 @@
+alias: Motion Detected Alert
+description: Alerts all mobile apps
+trigger:
+  - platform: mqtt
+    topic: BlueIris/+/Status
+condition: []
+action:
+  - service: camera.snapshot
+    data:
+      filename: /media/alert_{{ trigger.payload_json.cam }}.jpg
+    target:
+      entity_id: camera.mqtt_{{ trigger.payload_json.cam }}_alert
+  - service: notify.mobile_app_pixel_6_rood
+    data:
+      title: >-
+        A {{ trigger.payload_json.object.split(':')[0] }} detected on {{
+        trigger.payload_json.cam }}
+      message: Confidence is {{ trigger.payload_json.object.split(':')[1] }}
+      data:
+        ttl: 0
+        priority: high
+        image: /media/local/alert_{{ trigger.payload_json.cam }}.jpg
+  - service: notify.mobile_app_pixel_6_rood
+    data:
+      title: TTS notification
+      message: TTS
+      data:
+        ttl: 0
+        priority: high
+        tts_text: >-
+          A {{ trigger.payload_json.object.split(':')[0] }} detected on {{
+          trigger.payload_json.cam }}
+mode: single
