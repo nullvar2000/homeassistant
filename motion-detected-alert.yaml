@@ -10,7 +10,7 @@ action:
       filename: /media/alert_{{ trigger.payload_json.cam }}.jpg
     target:
       entity_id: camera.mqtt_{{ trigger.payload_json.cam }}_alert
-  - service: notify.mobile_app_pixel_6_rood
+  - service: notify.all_devices
     data:
       title: >-
         A {{ trigger.payload_json.object.split(':')[0] }} detected on {{
@@ -20,7 +20,7 @@ action:
         ttl: 0
         priority: high
         image: /media/local/alert_{{ trigger.payload_json.cam }}.jpg
-  - service: notify.mobile_app_pixel_6_rood
+  - service: notify.all_devices
     data:
       title: TTS notification
       message: TTS
