@@ -1,10 +1,15 @@
+homeassistant:
+  media_dirs:
+    media: /media
+    recording: /media/recordings
+    
 notify:
   - name: all_devices
     platform: group
     services:
-      - service: mobile_app_pixel_6_rood
-      - service: mobile_app_pixel_6_pro_mary
-
+      - service: mobile_app_pixel_6
+      - service: mobile_app_pixel_6_pro
+      
 mqtt:
   camera:
     - topic: BlueIris/frontstairs/alert
@@ -23,7 +28,3 @@ mqtt:
       name: MQTT Southyard Alert
       encoding: b64
       unique_id: camera.mqtt_southyard_alert
-    - topic: BlueIris/frontdoor/alert
-      name: MQTT Frontdoor Alert
-      encoding: b64
-      unique_id: camera.mqtt_frontdoor_alert
