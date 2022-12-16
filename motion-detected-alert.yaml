@@ -19,7 +19,11 @@ action:
       data:
         ttl: 0
         priority: high
-        image: /media/local/alert_{{ trigger.payload_json.cam }}.jpg
+        image: /api/camera_proxy/camera.mqtt_{{ trigger.payload_json.cam }}_alert
+        actions:
+          - action: URI
+            title: Live View
+            uri: entityId:camera.sovereign_{{ trigger.payload_json.cam }}
   - service: notify.all_devices
     data:
       title: TTS notification
